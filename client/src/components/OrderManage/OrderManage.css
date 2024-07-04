@@ -1,0 +1,13 @@
+td, th {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 15px; /* Adjust column width */
+    height: 15px; /* Adjust row height */
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow: ellipsis;
+    padding: 0.1rem;
+    margin: 0.1rem;
+    font-size: 0.7rem;
+  }

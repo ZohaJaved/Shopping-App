@@ -1,0 +1,9 @@
+.button {
+    /* Common styles for both buttons */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Add rounded corners */
+    font-weight: bold; /* Make text bold */
+    cursor: pointer; /* Indicate clickable element */
+  }
+  

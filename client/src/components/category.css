@@ -1,0 +1,211 @@
+body{
+  background:  #F5F5F5;   
+  padding-top: 10px;
+}
+
+
+.category-wrapper{
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+   
+}
+.table-container{
+  width: 55%;
+  left: -20%;
+}
+ 
+.displayform{
+  width:45%;
+  /* margin-top:50px;     */
+  /* margin:50px; */
+  height:40%;
+  float:right;
+  position: fixed;
+  left: 60%;
+  border-radius: 91px;
+  background: #e0e0e0;
+  box-shadow:  26px 26px 52px #bebebe, -26px -26px 52px #ffffff;
+  flex: 35%;
+  
+}
+
+.input {
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 1em;
+  background-color: #ccc;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  transition: 300ms ease-in-out;
+}
+
+.input:focus {
+  background-color: white;
+  transform: scale(1.05);
+  box-shadow: 13px 13px 100px #969696,
+             -13px -13px 100px #ffffff;
+}
+
+.add {
+  margin-top: 10px;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all .3s;
+  box-shadow: 6px 6px 12px #c5c5c5,
+             -6px -6px 12px #ffffff;
+}
+
+.add:hover {
+  border: 1px solid white;
+}
+
+.add:active {
+  box-shadow: 4px 4px 12px #c5c5c5,
+             -4px -4px 12px #ffffff;
+}
+
+.table td{
+  text-align: center;
+}
+.table th{
+    background-color: #79AC78;
+    border-radius: 10px;
+  }
+.table tr:nth-child(odd){
+  background-color: #D0E7D2;
+  border-radius: 10px;
+  pointer-events: none;
+}
+.table tr:nth-child(even){
+  background-color: #F1EFEF;
+}
+
+.table-container{
+  flex: 65%;
+  
+}
+
+
+
+.addProduct{
+    display: flex;
+    flex-direction: column;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica+SC&family=Montserrat:wght@100;200;300;400;500&family=Raleway:wght@100;200;500&family=Staatliches&display=swap');
+
+*,::after,::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: start; /* Align items at the start horizontally and vertically */
+  padding: 20px; /* Optional: Add padding to the body */
+}
+
+
+.table-container{
+  overflow: auto;
+  display: flex;
+  width: 55%;
+height: calc(600px / 100 * 100%);
+float: left; /* This is deprecated, consider using CSS Grid or Flexbox instead */
+margin-top: calc(-75px / 100 * 100%);
+left: 10%;
+
+}
+
+table{
+  border-collapse: collapse;
+  color: #555;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+tr:has(th){
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+tr > *{
+  padding: 1rem;
+}
+
+tr:has(:not(th)):nth-child(even) td{
+  background-color: #fff;
+}
+tr:has(:not(th)):nth-child(odd) td{
+  background-color: #eee;
+}
+
+td,th{
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5%;
+  margin: 5%;
+}
+
+
+
+td:nth-child(odd)::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #0001;
+  top: 0;
+  left: 0;
+}
+
+th{
+  background-color: #aaa;
+  color: #222;
+}
+
+img{
+  height: 10vh;
+}
+
+[data-sticky]{
+  position: sticky;
+  z-index: 2;
+  color: #000;
+}
+
+[data-sticky]::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0004;
+  z-index: -1;
+}
+
+[data-sticky="left"]{
+  left: var(--_left);
+}
+
+[data-sticky="right"]{
+  right: 0;
+}
+/* addCategory  */
+
+
+
+
+

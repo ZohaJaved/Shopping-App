@@ -1,0 +1,30 @@
+.cartWrapper h2{
+    padding-left: 40%;
+    align-items: center;
+}
+.checkOutButton{
+    left: 40%;
+    align-items: center;
+}
+
+.cartPage{
+    display: flex;
+    
+}
+
+.cartWrapper{
+    flex: 60%;
+    margin-top: 2rem;
+    margin-left: 3rem;
+    margin-right: 1rem;
+}
+.container{
+    margin-top: 3rem;
+}
+.priceDetail{
+    position: relative;
+    margin-left: 3rem;
+    margin-right: 2rem;
+    margin-top: 3rem;
+    flex: 40%;
+}

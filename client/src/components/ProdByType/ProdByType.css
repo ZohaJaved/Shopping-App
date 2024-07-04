@@ -1,0 +1,77 @@
+
+.section1 .productType{
+    display:flex;
+    flex-direction: row;
+    
+}
+.section1 .container{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height:max-content;
+    justify-content: center;
+    margin: 10px auto;
+}
+.section1 .container .items{
+   width: 200px;
+   height: 300px;
+   background-color: white;
+   margin: 15px;
+   border-width: .25rem;
+   border-style: solid;
+   border-color: black;
+   border-radius: 12px;
+}
+
+.section1 .container .items .img img{
+    width: 200px;
+    height: 200px;
+    margin:0;
+    padding-left: 0;
+    border-radius: 8px;
+    transition-duration: 0.8s;
+    
+}
+.section1 .container .items .img{
+    overflow: hidden;
+    margin: 0;
+}
+
+.section1 .container .items .img img.hover-img{
+    transform: scale(1.2);
+    transition-duration: 0.8s;
+    border-radius: 12px;
+}
+
+.section1 .container .items .name{
+text-align: center;
+background-color: rgb(230, 132, 153);
+height: 25px;
+padding-top: 4px;
+color: white;
+margin: 0;
+}
+
+.section1 .container .items .price{
+    float: left;
+    padding-left: 10px;
+    display: block;
+    width: 100%;
+    color: rgb(232, 63, 25);
+}
+
+.section1 .container .items .des{
+    padding-left: 10px;
+    color:black;
+    font-size: 14px; 
+    overflow: hidden; /* Ensures that any overflowing content is hidden */
+    text-overflow: ellipsis; /* Adds an ellipsis (...) to indicate truncated text */
+    
+}
+
+.section1 .container .items .addToCart:active {
+    /* Apply your desired CSS styles here */
+    /* For example, change the background color */
+    background-color: #ccc; /* Change to your preferred color */
+  }
+
