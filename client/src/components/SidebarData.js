@@ -10,7 +10,7 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 export const SidebarData=[
     {
         title:'Home',
-        
+        path:'/admin',
         icon:<IoMdHome />,
         cname:'nav-text'
     },
@@ -27,21 +27,9 @@ export const SidebarData=[
         cname:'nav-text'
     },
     {
-        title:'Offers',
-        path:'/offer',
-        icon:<BiSolidOffer />,
-        cname:'nav-text'
-    },
-    {
         title:'Orders',
         path:'/Ordermanage',
         icon:<AiOutlineBorder />,
-        cname:'nav-text'
-    },
-    {
-        title:'Log Out',
-        path:'/logout',
-        icon:<RiLogoutBoxRLine />,
         cname:'nav-text'
     }
 ]

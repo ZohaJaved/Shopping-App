@@ -1,8 +1,24 @@
 import { createContext } from "react";
 import {react,useContext,useEffect,useState} from "react";
-import { checkSession,logOut } from "./components/api";
+import { logOut } from "./components/api";
+import axios from "axios"
 
 const AuthContext=createContext();
+
+ const checkSession=async()=>{
+
+  try{
+      const response=await axios.get('http://localhost:3001/api/checkSession',{
+          withCredentials:true//ensure cookies are sent with the request
+      })
+      console.log("response in api.js",response)
+      // setUserCart(response.data.userCart)
+      return response.data.loggedIn;
+  }catch(error){
+      console.error('Error checking session',error);
+      return {loggedIn:false}
+  }
+}
 
 //Create a provider component
 export const AuthProvider=({children}) =>{
@@ -14,7 +30,6 @@ export const AuthProvider=({children}) =>{
         console.log("result==",result);
         // navigate("userHome");
         if(result===true){
-          
           setLoggedIN(true);
           console.log("setLoggedIn is ",loggedIN)
         }

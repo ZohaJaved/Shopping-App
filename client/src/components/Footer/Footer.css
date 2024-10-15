@@ -1,11 +1,11 @@
 .footer-area{
     padding: 10px 0px;
-    background-color: #d6e7ee
+    background-color: #F7AEA6;
     
 }
 .row {
-    background-color: #d6e7ee;
-    color: black;
+    background-color:#F7AEA6;
+    color:black;
   }
   
 .footer-area a{
@@ -13,27 +13,27 @@
 }
 .footer-area .footer-heading{
     font-size: 24px;
-    color: black
+    color: black;
 }
 .footer-area .footer-underline{
     height: 1px;
     width: 70px;
-    background-color: #ddd;
+    background-color: #F7AEA6;
     margin: 10px 0px;
 }
 .copyright-area{
     padding: 14px 0px;
-    background-color: #262626;
+    background-color: #F7AEA6;
 }
 .copyright-area p{
     margin-bottom: 0px;
-    color: #fff;
+    color: #F7AEA6;
 }
 .copyright-area .social-media{
     text-align: end;
 }
 .copyright-area .social-media a{
     margin: 0px 10px;
-    color: #fff;
+    color: #F7AEA6;
     width: 20px;
 }

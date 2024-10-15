@@ -1,0 +1,151 @@
+.container-slider{
+
+    height: 75vh;
+    max-height: 50%;
+    margin: 0 5px 0 5px;
+    /* padding: 5px; */
+    position: relative;
+    overflow: hidden;
+    /* box-shadow: 0 10px 20px rgba(0,0,0,0.2); */
+    background-color: #f7f2f2;
+    opacity: 1;
+    position: relative;
+    animation: fadeIn 2s ease-in-out;
+    /* border-radius: 15px; */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+
+@media screen and (max-width:700px){
+    .container-slider{
+        height: 70vh;
+        margin:0 10px 
+;    }
+}
+.slide{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity ease-in-out 0.4s;
+    object-fit: cover; /* Ensure the entire image fits within the parent div */
+    position: absolute; /* Position the image absolutely within the parent div */
+    
+}
+.slider-image {
+    width: 100% !important;
+    height: 100% !important; /* Ensure the image height fits the parent div */
+    
+  }
+.active-anim{
+    opacity: 1; /* show active slide*/
+    max-height: 70vh;
+    position: relative;
+    width: auto;
+    object-fit: cover; /* Ensure the entire image fits within the parent div */
+    width: 100%; /* Ensure it fills the container */
+    height: 100%; /* Ensure it fills the container */
+}
+.btn-slide{
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50%;
+    /* background-color: transparent; */
+    border:1px solid rgba(34,34,34,0.287);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.btn-slide-next{
+    position: absolute;
+    left: 95%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* example styling */
+    border-radius: 50%; 
+    border-color: transparent;
+    width: 70px;
+}
+
+.btn-slide-prev{
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* example styling */
+    border-radius: 50%; /* example styling */
+    border-color: transparent;
+}
+
+.arrow-icon {
+  width: 24px; /* Adjust this size to your preference */
+  height: auto;
+}
+
+  
+  .text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure text is above the image */
+    color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container-dots{
+    position: absolute;
+    bottom: 3%;
+    left:50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    height: 1.7vh;
+    border-radius: 30%;
+  }
+  .dot{
+    height: 1vh;
+    width: 1vh;
+    border-radius: 100%;
+     background-color: #ccc; /* Example background color */
+     margin: 0 5px; /* Adjust spacing between dots */
+  }
+
+  .active-dot{
+    height: 1.7vh;
+    width: 1.7vh;
+    border-radius: 100%;
+    background-color: rgb(252, 251, 251); /* Light gray background color */
+    border: 1px solid white; /* Pure white border */
+    margin: 0 5px; /* Adjust spacing between dots */
+    display: inline-block;
+    cursor: pointer;
+  }

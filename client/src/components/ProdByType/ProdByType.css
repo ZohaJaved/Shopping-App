@@ -1,77 +1,171 @@
 
-.section1 .productType{
-    display:flex;
-    flex-direction: row;
-    
-}
-.section1 .container{
+.product-wrapper{
     display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height:max-content;
+    flex-direction: column;
     justify-content: center;
-    margin: 10px auto;
-}
-.section1 .container .items{
-   width: 200px;
-   height: 300px;
-   background-color: white;
-   margin: 15px;
-   border-width: .25rem;
-   border-style: solid;
-   border-color: black;
-   border-radius: 12px;
+    align-items: center;
+    /* margin:0 5px; */
+    box-sizing: border-box;
+    background-color: #ebf2f2;
 }
 
-.section1 .container .items .img img{
-    width: 200px;
-    height: 200px;
-    margin:0;
-    padding-left: 0;
-    border-radius: 8px;
-    transition-duration: 0.8s;
-    
-}
-.section1 .container .items .img{
-    overflow: hidden;
-    margin: 0;
-}
-
-.section1 .container .items .img img.hover-img{
-    transform: scale(1.2);
-    transition-duration: 0.8s;
-    border-radius: 12px;
-}
-
-.section1 .container .items .name{
-text-align: center;
-background-color: rgb(230, 132, 153);
-height: 25px;
-padding-top: 4px;
-color: white;
-margin: 0;
-}
-
-.section1 .container .items .price{
-    float: left;
-    padding-left: 10px;
-    display: block;
+.product-wrapper .productType{
+    display:flex;
+    flex-direction: column; /* Changed to column to stack rows */
+    /* margin:  0px 5px; */
     width: 100%;
-    color: rgb(232, 63, 25);
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0,0.1);
 }
 
-.section1 .container .items .des{
-    padding-left: 10px;
-    color:black;
-    font-size: 14px; 
-    overflow: hidden; /* Ensures that any overflowing content is hidden */
-    text-overflow: ellipsis; /* Adds an ellipsis (...) to indicate truncated text */
-    
-}
-
-.section1 .container .items .addToCart:active {
-    /* Apply your desired CSS styles here */
-    /* For example, change the background color */
-    background-color: #ccc; /* Change to your preferred color */
+.heading {
+    font-family: "Georgia", serif; /* Alternative font family */
+    font-size: 3rem; /* Larger font size for a broader heading */
+    text-decoration: underline; /* Underline the heading */
+    color: #030303; /* Slightly lighter grey text color */
+    padding: 10px 0; /* Add padding to give more space around the heading */
+    margin-bottom: 20px; /* Increase the margin below the heading */
   }
+  
+  
+.product-wrapper .item-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns of equal width */
+    gap: 3px; /* Optional: space between items */
+    /* width: 100%; */
+    margin: 0 5px;
+    justify-items: center;
+    align-items: center;
+}
+
+.product-wrapper .item-container .item {
+    display: flex;
+    flex-direction: column;
+    grid-template-rows:90% 3% 3%  ;
+    width: 100%; /* Ensure items take up full width of their column */
+    height: 75vh;
+    background-color: white; 
+    border: 1px solid none ;
+    border-radius: 5px;
+    padding:5px;
+    margin: 5px;
+
+}
+
+.product-wrapper .item-container .item .item-img{
+    height: 85%;
+    width: 100%;
+    object-fit: cover;
+    transition-duration: 0.8s;
+}
+
+.product-wrapper .item-container .item .product-title {
+    height: 10%;
+    margin-top: 2rem;
+    align-self: center;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Limit to 1 lines */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis; /* Add ellipsis after truncation */
+    line-height: 1.2; /* Adjust the line height for better spacing */
+    max-height: 2.4em; /* Control max height based on 2 lines */
+    width: 100%;
+    margin: 0px 5px;
+    transition: all .4s ease-in-out;
+}
+
+
+.product-wrapper .item-container .item .product-price {
+    margin-left: 5%;
+    align-self: center;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ensures that overflowing text is replaced by "..." */
+    width: 100%;
+}
+
+
+ .product-wrapper .item-container .item .product-price{
+    font-family: var(--typeHeaderPrimary), var(--typeHeaderFallback) !important;
+    color: var(gray);
+    font-size: calc(var(17px)*.85);
+    margin-top: 5px;
+} 
+
+.view-all-button {
+    display: block;
+    margin: 20px auto; /* Centers the button */
+    padding: 10px 20px;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.view-all-button:hover {
+    background-color: #444; /* Darker background on hover */
+    color: #ddd; /* Lighter text on hover */
+}
+
+@media (max-width:768px){
+    .product-wrapper .item-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 4 columns of equal width */
+        gap: 1px; /* Optional: space between items */
+        width: 98%;
+        margin: 0 1%;
+    }
+    .product-wrapper .item-container .item {
+        display: flex;
+        flex-direction: column;
+        grid-template-rows:90% 3% 3%  ;
+        width: 100%; /* Ensure items take up full width of their column */
+        height: 46vh;
+        background-color: #faf2f1;
+        border: 0.5px solid black ;
+        padding: 2px;
+        margin: 2px;
+    }
+    .product-wrapper .item-container .item .product-title span{
+        height: 10%;
+        margin-top: 0.25rem;
+        align-self:start;
+        text-align: center;
+        font-size: 7px;
+        font-weight: bold;
+        color: #000 ;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        }
+        .product-wrapper .item-container .item .product-price{
+            margin: 0;
+            font-size: 10px;
+        }
+
+        .heading {
+            font-family: "Georgia", serif; /* Alternative font family */
+            font-size: 2rem; /* Larger font size for a broader heading */
+            text-decoration: underline; /* Underline the heading */
+            color: #030303; 
+            padding: 5px 0; /* Add padding to give more space around the heading */
+            margin-bottom: 5px; /* Increase the margin below the heading */
+          }
+
+}
+
+
 

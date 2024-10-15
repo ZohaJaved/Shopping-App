@@ -1,0 +1,12 @@
+/* CSS for the loading state */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Light grey background */
+    font-size: 1.5rem; /* Larger font size */
+    color: #333; /* Dark grey text color */
+    font-family: Arial, sans-serif; /* Font family */
+  }
+  

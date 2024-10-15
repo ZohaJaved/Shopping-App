@@ -15,10 +15,10 @@ import { useDispatch,useSelector } from 'react-redux';
   const [quantityRequiredNotAvailable,setQuantityRequiredNotAvailable]=useState(null);
   const dispatch=useDispatch();
   
-  const handleModifyCart = (productDetails, quantityIncrement) => {
-    console.log("Product Details:", productDetails);
-    console.log("Quantity Increment:", quantityIncrement);
 
+  const handleModifyCart = (productDetails, quantityIncrement) => {
+    console.log("productDetails.quantity:", productDetails.quantity);
+    console.log("Quantity Increment:", quantityIncrement);
     // Dispatch modifyCart action
     dispatch(modifyCart({ productDetails, quantityIncrement }));
     dispatch(updateBillSummary());
@@ -69,39 +69,47 @@ import { useDispatch,useSelector } from 'react-redux';
    }
   }, [props._id,props]); // Add prevQuantityProductAvail as a dependency
   
-   
+  console.log("props.product",props.cartItems) 
+
   return (
     <div >
         <table className='table' style={{ pointerEvents: 'all !important' }}>
         <tbody>
     <tr>
-      <td> <img style={{ height: '5rem', width: '5rem' }} src={props.image} /></td>
+      <td style={{  width: '70px' }}> <img style={{  width: '100%' }} src={props.image} /></td>
       <td>{props.name}</td>
-      <td>₹{props.price}</td>
+      <td>₹{props.discountedPrice}</td>
       <td>
         <span onClick={(event)=>{
            console.warn("- button clicked")
-          //  event.preventDefault();
-          //  props.updateBill();
-          //  props.updateDisplay();
-           
-          if(props.quantity&&props.quantity>1&&props.product){
+          if(props.product.quantity&&props.product.quantity>1){
+            console.log("props.product.quantity",props.product.quantity)
           handleModifyCart(props.product,-1);
             getProductQuantity();
         }}}
-          style={{ pointerEvents: 'all' }}
+        style={{
+          pointerEvents: 'all',
+          padding: '10px',
+          cursor: 'pointer', // Show hand cursor on hover
+          transition: 'background-color 0.3s ease' // Smooth transition
+        }}
           >-</span>
         <span>{props.quantity}</span>
       {!quantityRequiredNotAvailable&&<span onClick={(event)=>{
           if(props.product){
           handleModifyCart(props.product,1);}
          }}
-          style={{ pointerEvents: 'all' }}
+         style={{
+          pointerEvents: 'all',
+          padding: '10px',
+          cursor: ' pointer', // Show hand cursor on hover
+          transition: 'background-color 0.3s ease' // Smooth transition
+        }}
           >+</span>}
        
       </td>
     
-      <td><svg  style={{ pointerEvents: 'all' }} onClick={(event)=>{
+      <td><svg  style={{ pointerEvents: 'all',cursor:"pointer" }} onClick={(event)=>{
         
         handleModifyCart(props.product,0);
         }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

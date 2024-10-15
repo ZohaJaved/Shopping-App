@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import  { useState, useEffect } from 'react';
-import Navbars from '../Navbars';
+import Navbars from '../Navbar/Navbars.jsx';
 
 function DeliveryBoy(props) {
   const statusOptions = ['Pending', 'Processing', 'Delivered'];
@@ -84,7 +84,7 @@ function DeliveryBoy(props) {
             <td>{object._id}</td>
             <td>{object.customerName}</td>
             <td>{object.contactNum}</td>
-            <td>{object.address}</td>
+            <td>{object.address.houseNumber}</td>
             <td>{object.amount}</td>
             <td>{object.paymentMode}</td>
             <td>

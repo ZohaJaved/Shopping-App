@@ -1,0 +1,11 @@
+.profile-container{
+    margin:0px auto;
+}
+
+.profile-table{
+    margin:0px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}

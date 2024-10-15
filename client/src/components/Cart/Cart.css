@@ -1,5 +1,5 @@
 .cartWrapper h2{
-    padding-left: 40%;
+    padding-left: 25%;
     align-items: center;
 }
 .checkOutButton{
@@ -9,7 +9,7 @@
 
 .cartPage{
     display: flex;
-    
+    background-color: #f6e4e3;
 }
 
 .cartWrapper{
@@ -27,4 +27,29 @@
     margin-right: 2rem;
     margin-top: 3rem;
     flex: 40%;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    background-color: black;
+    color: white;
+}
+
+@media(max-width:768px){
+    .cartPage{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-color: #f6e4e3;
+    }
+    .cartWrapper{
+        margin: 2rem;
+    }
 }

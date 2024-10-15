@@ -1,0 +1,395 @@
+ /* Basic styles */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  /* padding: 20px; */
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Margin between form elements */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  width: fit-content; /* Labels don't stretch full width */
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+
+.product-page-section .blur {
+  filter: blur(5px);
+  pointer-events: none !important;
+  overflow: hidden; 
+  height: 100vh;
+  width: auto;
+  color: #faf2f1;
+}
+
+.product-heading {
+  font-size: 2.5em; /* Larger font size */
+  color: #333; /* Darker color for contrast */
+  text-align: center; /* Center the heading */
+  margin-top: 20px; /* Space above the heading */
+  margin-bottom: 20px; /* Space below the heading */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase letters */
+  letter-spacing: 2px; /* Spacing between letters */
+  border-bottom: 2px solid #272a27; /* Green underline */
+  padding-bottom: 10px; /* Space below the text */
+}
+
+
+.add-product-button {
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove border */
+  color: white; /* White text */
+  padding: 15px 32px; /* Padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Inline-block */
+  font-size: 16px; /* Font size */
+  margin: 10px 2px; /* Margin */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.add-product-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+
+/* button[type="submit"],
+button[type="button"] {
+  background-color: #4CAF50; /* Green */
+  /* color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem; */
+/* } */ 
+
+/* button[type="submit"]:hover,
+button[type="button"]:hover {
+  background-color: #45A049; /* Darker green on hover */
+/* } */ 
+
+/* Specific styles for product images */
+/* Basic image styles */
+.product-images {
+  display: flex;
+  flex-wrap: wrap; /* Allows images to wrap onto multiple lines */
+  gap: 1rem; /* Margin between images */
+}
+
+.product-images img {
+  width: 100px; /* Adjust width as needed */
+  height: 100px; /* Adjust height as needed */
+  object-fit: cover; /* Maintain aspect ratio and crop within the dimensions */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer; /* Indicate interactivity (optional) */
+}
+
+/* Hover effect (optional) */
+.product-images img:hover {
+  opacity: 0.8; /* Slightly reduce opacity on hover */
+  transform: scale(1.05); /* Subtle zoom effect on hover */
+  transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* Styling for image upload input (optional) */
+.product-image-upload {
+  display: none; /* Hide the file input element by default */
+}
+
+/* Styling for "Replace Image" button (optional) */
+/* .replace-image-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #eee;
+  cursor: pointer;
+  margin-top: 5px;
+} */
+
+/* .replace-image-button:hover {
+  background-color: #ddd; /* Slightly darker background on hover */
+/* } */ 
+/* Styling for colors and sizes (if applicable) */
+.color-section,
+.size-section {
+  margin-bottom: 1rem;
+}
+
+.color-section label,
+.size-section label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Styling for "Replace" and "Delete" buttons (if applicable) */
+/* .image-actions button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 5px;
+} */
+
+/* .image-actions button:hover {
+  background-color: #eee;
+} */
+
+/* Styling for discounted price (optional) */
+.discount-price {
+  font-weight: bold;
+  color: green;
+  margin-top: 5px;
+}
+
+
+
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 20rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.image-container {
+  width: 100vw;
+  height: 9rem; /* Adjust height as needed */
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  gap: 10px;
+}
+
+.image-container .image-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensures image container fills available space */
+  height: 100%;
+  border: 1px solid #ccc;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Required for absolute positioning of buttons */
+}
+
+.image-holder {
+  flex: 1; /* Occupy remaining space within image-wrapper */
+}
+
+.button-container {
+  position: absolute; /* Positioned within image-wrapper */
+  bottom:0%; /* Maintains spacing from the bottom */
+  left: 0; /* Align to the left edge */
+  right: 0; /* Align to the right edge */
+  display: flex; /* Arrange buttons horizontally */
+  flex-direction: row;
+  justify-content: space-between; /* Distribute buttons evenly */
+  align-self: flex-end;
+  /* Optional styles for background, border, etc. */
+}
+
+.image-modify-button{
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background (optional) */
+  color: white;
+  /* Removed flex: 1; */  /* Removed as it caused buttons to take full width */
+  padding: 5px 10px; /* Adjust padding for desired button size */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Indicate interactivity (optional) */
+  transition: all 0.2s ease-in-out; /* Smooth hover effects (optional) */
+  margin: 0 5px;  /* Add margin for separation */
+}
+
+
+.image-items img {
+  object-fit: cover; /* Maintain aspect ratio and crop within the container */
+  width: 100%; /* Fills the entire container width */
+  height: 100%; /* Fills the entire container height */
+}
+
+.placeholder {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.upload-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+}
+
+/* Button Styles */
+.replace-image-button,
+.delete-image-button {
+  
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Indicate interactivity (optional) */
+  transition: all 0.2s ease-in-out; /* Smooth hover effects (optional) */
+}
+
+.replace-image-button:hover,
+.delete-image-button:hover {
+  margin: 5px;
+}
+
+
+
+.color-flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.color-container,
+.size-container {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in the element’s total width and height */
+}
+
+/* Ensure the items are flexible and take up equal space */
+.color-group {
+  flex: calc(33%) ;
+  max-width: 33%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+/* Container for color image and name */
+.color-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-bottom: 10px; */
+}
+
+/* Color image styling */
+.color-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+/* Color name styling */
+.color-name {
+  font-size: 0.9em;
+  color: #333;
+  text-align: center;
+}
+
+/* Inputs for colors */
+.color-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.color-inputs label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.color-inputs input[type="text"],
+.color-inputs input[type="file"] {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Button for adding colors */
+.add-color-button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.add-color-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* Textarea styling */
+.items .description-textarea {
+  width: 100%;
+  height: 7rem;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical; /* Allows the user to resize vertically */
+}
+
+@media(max-width:600px){
+  .container {
+    background-color: lightcoral;
+    padding: 10px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+  .gridContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%
+  }
+  .image-container{
+    display: flex;
+    flex-direction: row;
+  }
+  .image-item{
+    flex: 50%;
+  }
+}

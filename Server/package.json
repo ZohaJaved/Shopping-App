@@ -5,7 +5,8 @@
   "main": "category.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "react-scripts build"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +30,7 @@
     "npm": "^10.8.0",
     "parser": "^0.1.4",
     "path": "^0.12.7",
+    "razorpay": "^2.9.4",
     "uuid": "^9.0.1"
   }
 }

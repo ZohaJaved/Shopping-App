@@ -1,0 +1,42 @@
+.page-section.blur {
+    filter: blur(5px) !important;
+    pointer-events: none !important;
+    overflow: hidden !important; 
+    height: 100vh;
+  }
+
+  .page-section{
+    width: 100vw;
+  }
+
+  .gridContainer{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%
+}
+.gridContainer .items{
+  gap: 2rem;
+}
+.items input{
+  height: 3rem;
+
+}
+.items  label {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%; 
+}
+
+.gridContainer-2{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+}
+
+.items-2{
+  width: 100%; /* Or any specific width you need */
+  height: auto; /* Or any specific height you need */
+  max-width: 100%;
+  overflow: auto; /* Prevent overflow from the parent */
+}
+

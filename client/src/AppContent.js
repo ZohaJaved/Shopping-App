@@ -1,11 +1,9 @@
 import { BrowserRouter , Route, Routes } from 'react-router-dom';
-import { useState,useEffect } from 'react';
-import { useAuth,AuthProvider } from './auth.js';
-import Navbars from "./components/Navbars";
+import { useAuth } from './auth.js';
 import Admin from "./components/AdminHome"
-import SideNav from "./components/SideNav";
-import Category from "./components/category"
-import Product from "./components/Product/Product"
+import Category from "./components/Category_admin/category.jsx"
+import Product from "./components/productAdmin/Product"
+import ProductInput from './components/productAdmin/productInput.jsx';
 import User from './components/User/User.jsx';
 import CategoryState from './components/Context/CategoryState.js';
 import EditCategory from './components/EditCategory/EditCategory.jsx';
@@ -22,9 +20,9 @@ import LoginState from "./components/Context/LoginState.js"
 import SearchItems from "./components/SearchItems/SearchItems.jsx"
 import SearchState from './components/Context/SearchState.js';
 import DeliveryBoy from './components/Employee/DeliveryBoy.jsx';
-import { checkSession } from './components/api.js';
-import LoginContext from './components/Context/LoginContext.js';
-import { useContext } from 'react';
+import ProductDetailsPage from './components/ProductDetailsPage/ProductDetailsPage.jsx';
+import AccountDetails from "./components/AccountDetails/AccountDetails.jsx"
+
 
 function AppContent(props){
     const {loggedIN,setLoggedIn}= useAuth();
@@ -39,12 +37,12 @@ function AppContent(props){
     <SidebarState>
     <CategoryState>
     <LoginState>
-      <Routes>
-        
-        {loggedIN &&loggedIN===true?(
-          <>
-          {console.log("loggedIn=======++++++++++",loggedIN)}
-       <Route path="/userHome"  element={<User/>} />
+      <Routes> 
+       {loggedIN &&loggedIN===true?(
+       <>
+       {console.log("loggedIn=======++++++++++",loggedIN)}
+       <Route path="/" element={<SignUp verifySession={()=>verifySession} setLoggedIn={setLoggedIn} successfulLogin={()=>successfulLogin()} />}/>
+       <Route path="/Home"  element={<User/>} />  //userHome
        <Route path="/admin"  element={<Admin/>} />
        <Route path="/ProductUserDisplay"  element={<ProductUserDisplay/>} />
        <Route path='/searchItems' element={<SearchItems/>}/>
@@ -52,17 +50,18 @@ function AppContent(props){
        <Route path="/edit-category" element={<EditCategory />} />
        <Route path="/editProduct" element={<EditProduct />} />
        <Route path="/product"  element={<Product/>}/>
-       <Route path="/cart"  element={<Cart/>}/>
-       <Route path="/orderUser"  element={<OrderUser/>}/>
+       <Route path="/Cart"  element={<Cart/>}/>
+       <Route path="/Account" element={<AccountDetails/>}/>
+       <Route path="/Orders"  element={<OrderUser/>}/>
        <Route path="/orderManage"  element={<Ordermanage/>}/>
-       <Route path="/" element={<SignUp verifySession={()=>verifySession} setLoggedIn={setLoggedIn} successfulLogin={()=>successfulLogin()} />}/>
+       <Route path="/productDetailsPage" element={<ProductDetailsPage/>} />
+       <Route path="/productInput"  element={<ProductInput/>} />
        <Route path="/delBoy" element={<DeliveryBoy/>} />
        </>
        )
        :(<Route path="*"  element={<SignUp verifySession={()=>verifySession} setLoggedIn={setLoggedIn} successfulLogin={()=>successfulLogin()}/>}/>)
         }
       </Routes>
-      
       </LoginState>
     </CategoryState>
     </SidebarState>

@@ -1,13 +1,14 @@
 import React from 'react'
-import './category.css'
-import Navbars from './Navbars';
+import './Category_admin/category.jsx'
+import Navbars from './Navbar/Navbars.jsx';
 import SideNav from './SideNav';
+import AdminNavbar from './Navbar/AdminNavbar.jsx';
 
 
 function AdminHome(){
-    const navElements=['Notification','Account','Logout']
+    
     return(<div className='admin' >
-        <Navbars  navElements={navElements} displayToggle={true}/>
+        <AdminNavbar   displayToggle={true}/>
         <SideNav  />        
     </div>)
 }

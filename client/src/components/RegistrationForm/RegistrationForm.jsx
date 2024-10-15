@@ -5,7 +5,7 @@ import { useAuth,AuthProvider } from '../../auth.js';
 import axios from "axios"
 import { toast } from 'react-toastify';
 import LoginContext from "../Context/LoginContext.js"
-import Navbars from '../Navbars';
+import Navbars from '../Navbar/Navbars.jsx';
 import Footer from "../Footer/Footer.jsx"
 import { Navigate, useNavigate } from 'react-router-dom';
 import DeliveryBoy from '../Employee/DeliveryBoy.jsx';
@@ -32,7 +32,8 @@ function RegistrationForm(props) {
   //var for rendering delivery boy home page
   const [deliveryBoyPage,setDeliveryBoyPage]=useState();
   const {sessionId,setSessionId}=useContext(LoginContext);
-  const {setLoggedIN,verifySession}=useAuth();
+  const {setLoggedIN,verifySession}=useAuth()
+
   
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -265,7 +266,6 @@ function RegistrationForm(props) {
 
 
 async function handleSignInSubmit(event) {
-  
     event.preventDefault();
     console.log("userType",signIn.userType)
     
@@ -284,62 +284,43 @@ async function handleSignInSubmit(event) {
        
         if(response.data.success){
          console.log("userData recieve from server====",response.data.user);
-          props.successfulLogin();
-          verifySession();
-          console.log("userData recieve from server+++++++",response.data.user);
-         // await userContext.verifySession();
-
-         setSessionId(response.data.sessionId);
-         if (userContext) {
-                  
-                   userContext.setUserDetails(response.data.user);
-                   console.log("response.data.user++++++",userContext.userDetails);
+         verifySession();
+        setSessionId(response.data.sessionId);
+        console.log("response.data.sessionId",response.data.sessionId)
+         if (userContext) {  
+        userContext.setUserDetails(response.data.user);
+        localStorage.setItem('user',JSON.stringify(response.data.user))
+        console.log("response.data.user++++++",userContext.userDetails);
                }
-         console.log("response.data.user",response.data.user)
+         console.log("sessionId",sessionId)
          userContext.setUserDetails(response.data.user)
-         sessionStorage.setItem("sessionId",sessionId);
-       
-            navigate("/userHome");
-           
-        //  return response.data
-        }
-        
-      
-      //   if(response.status===200){
-          
-      //    if(signIn.email.toLowerCase() === "zohajaved2@gmail.com".toLowerCase()&&signIn.userType==='admin'){
-      //    console.log("signIn.email.toLowerCase()",signIn.email.toLowerCase())
+         sessionStorage.setItem("sessionId",response.data.sessionId);
          
-      //    navigate('/admin');
-      //     return;
-      //   }
-      //    if(signIn.email.toLowerCase() === "zohajaved2@gmail.com".toLowerCase()&&signIn.userType!=='admin'){
-      //     console.log('uertyp',signIn.userType)
-      //     setAuthenticationValidation("user Not exists")
-      //     return;
-      //     }
-      //     if(signIn.email.toLowerCase()==='janesmith1@gmail.com'||signIn.email.toLowerCase()==='emilybrown1@gmail.com'||signIn.email.toLowerCase()==='johndoe1@gmail.com'&&signIn.userType==='employee'){
-      //     console.log("employeee",signIn.email)
-      //     setDeliveryBoyPage(signIn.email)
-      //     return;
-      //    }
-      //    if(signIn.email.toLowerCase()==='janesmith1@gmail.com'||signIn.email.toLowerCase()==='emilybrown1@gmail.com'||signIn.email.toLowerCase()==='johndoe1@gmail.com'&&signIn.userType!=='employee'){
-      //   setAuthenticationValidation("user not found") 
-      //   }
-      //     else{
-      //     try{
-      //      // console.log("signIn1",userContext)
-      //       if (userContext) {
-      //         userContext.setUserDetails(response.data.user);
-      //     }
-      //    navigate("/userHome")}
-      //    catch(err){
-      //     console.log(err)
-      //    }
-      //   }
-      //   setSignInMessage("SignIn Success")
-      //  }
-      
+         
+        //  return response.data
+        if(signIn.email.toLowerCase() === "zohajaved2@gmail.com".toLowerCase()&&signIn.userType==='admin'){
+              console.log("signIn.email.toLowerCase()",signIn.email.toLowerCase())
+             
+              navigate('/admin');
+               return;
+        }
+        if(signIn.email.toLowerCase()==='janesmith1@gmail.com'||signIn.email.toLowerCase()==='emilybrown1@gmail.com'||signIn.email.toLowerCase()==='johndoe1@gmail.com'&&signIn.userType==='employee'){
+          setDeliveryBoyPage(signIn.email)
+               return;
+              }
+        else{
+          try{
+                  // console.log("signIn1",userContext)
+                 if (userContext) {
+                   userContext.setUserDetails(response.data.user);
+                }
+                navigate("/Home")}
+                catch(err){
+                 console.log(err)
+                }
+               setSignInMessage("SignIn Success")
+              }
+        }      
         // Handle successful login response, e.g., update UI, redirect user, etc.
     } catch (error) {
        if(error.response&&error.response.data.message){
@@ -360,15 +341,17 @@ async function handleSignInSubmit(event) {
 }
 
 
-  return (<div>
+  return (<div style={{ backgroundImage: 'url(https://plus.unsplash.com/premium_photo-1661774910035-05257f7d73a6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8b25saW5lJTIwc2hvcHBpbmd8ZW58MHx8MHx8fDA%3D)', 
+    backgroundSize: 'cover', 
+    backgroundRepeat: 'no-repeat'  }}>
     {/* this below div is for delivery boy page based on conditional rendering */}
     {deliveryBoyPage&&<DeliveryBoy email={deliveryBoyPage}/>}
     <div>
       {!deliveryBoyPage&&
       <div>
       <Navbars navElements={navElements}/>
-    <div className="container">
-      
+      <div className="container" >
+  
       <div className="form-wrapper">
         <ul className="nav-tabs">
           <li className={activeTab === 'signup' ? 'active' : ''} onClick={() => handleTabClick('signup')}>
@@ -388,7 +371,7 @@ async function handleSignInSubmit(event) {
                 <input type="text" id="name" name="name" placeholder='Enter Name' value={signUp.name} onChange={handleSignUpChange} maxlength="15" required />
               </div>
               {nameValidation && <span>{nameValidation}</span>}
-              <div className="form-group">
+              <div className="">
                 <label htmlFor="email">Email</label>
                 <input type="email" id="email" name="email" placeholder='Enter Email' value={signUp.email} onChange={handleSignUpChange} maxlength="30" required />
               </div>
@@ -487,7 +470,7 @@ async function handleSignInSubmit(event) {
              <label htmlFor="Email">Email</label>
              <input type="text" id="username" name="email" placeholder='Enter Email' value={signIn.email} onChange={handleSignInChange} maxLength={30}  required />
            </div>
-           <div className='validation'> {emailValidation&&<span>{emailValidation}</span>}</div>
+           <div > {emailValidation&&<span>{emailValidation}</span>}</div>
            <div className="form-group">
              <label htmlFor="password">Password</label>
              <input type="password" id="password" placeholder='Enter Password' name="password" maxLength={10} value={signIn.password} onChange={handleSignInChange} required />

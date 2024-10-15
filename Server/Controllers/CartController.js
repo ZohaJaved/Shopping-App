@@ -7,38 +7,34 @@ import session from "express-session";
 
 
 export const AddToCart = async (req, res) => {
-  
   const { ObjectId } = mongoose.Types; // Destructure ObjectId
-
-    const { productName, productPrice, category, discount, image, _id
+    const { productName, basePrice,discountedPrice, category, discount, productImages, _id
        } = req.body.productDetails;
        const email=req.session.user.email;
-       console.log("email",email)
     const quantityIncrement = req.body.quantityIncrement;
-    console.log("_id",_id)
+    console.log("quantityIncrement",quantityIncrement)
    // console.log("req.body",req.body)
     const newCartItem = {
         productName,
-        productPrice,
+        basePrice,
+        discountedPrice,
         category,
         discount,
-        quantity:1,
-        image,
+        quantity:quantityIncrement|1,
+        // productImages,
         product_id: _id, // Assuming this is the correct ID field
-        
     };
+    console.log("newCartItem",newCartItem)
     
     try {
      //find the userDetails
      const user=await UserModel.findOne({email})
-    //  console.log("userDetails",user);
+     console.log("user.cart",user.cart);
      if(!user){
       return res.status(404).json({ message: 'User not found' });
      }
-      
-     // Check if the product already exists in the user's cart
-     console.log("_id",_id)
-
+    // Check if the product already exists in the user's cart
+    console.log("_id",_id)
     const existingCartItem = user?.cart?.find(item =>{const mongooseObjectId = new ObjectId(_id);
       return mongooseObjectId.equals(item.product_id);})
     // existingCartItem will be either the matching item or null
@@ -47,22 +43,29 @@ export const AddToCart = async (req, res) => {
      if (existingCartItem) {
       // If the product exists, update the quantity
       existingCartItem.quantity += quantityIncrement;
+      user.cart=existingCartItem;
   }
   else {
     // If the product doesn't exist, create a new item and add it to the cart
-    user.cart&&user.cart.push({
-        product_id: _id,
-        productName,
-        productPrice,
-        category,
-        discount,
-        image,
-        quantity: quantityIncrement
-    });
-}
+    if (newCartItem.productName && newCartItem.basePrice && newCartItem.discountedPrice  && newCartItem.productImages && newCartItem.product_id ) {
+      console.log("newCartItem.productName:", newCartItem.productName);
+      console.log("newCartItem.basePrice:", newCartItem.basePrice);
+      console.log("newCartItem.quantity:", newCartItem.quantity);
+      console.log("newCartItem.discountedPrice:", newCartItem.discountedPrice);
+      console.log("newCartItem.discount:", newCartItem.discount);
+      console.log("newCartItem.productImages.length:", newCartItem.productImages.length);
+      console.log("user.cart.length",user.cart.length)
+      await user.cart.push(newCartItem);
+      console.log("user.cart.length",user.cart.length);
+    }
+    else {
+      console.error("newCartItem", newCartItem);
+    }
+  }
+  
 // Save the updated user object
 const updatedUser = await user.save();
-
+console.log("updatedUserCart",updatedUser.cart)
 // Return the updated user object with the cart
 return res.status(200).json(updatedUser.cart);
 } catch (error) {
@@ -224,22 +227,14 @@ export const ModifyCart = async (req, res) => {
 
  // products available in cart 
  export const getProductsInCart = async (req, res) => {
-  console.log("getProductsInCart in userController====", req.session.user.name);
-
-  // const sessionId = req.query.sessionId;
-    const userDetails = req.session.user;
-    if (userDetails) {//for authentication
-      console.log("userDetails.email",userDetails.email)
-        try{
-          let cart=await UserModel.find({email:userDetails.email})
-            
-          console.log("cartItems",cart);
-          res.json(userDetails.cart);
-        }
-        catch(error){
-          console.log(error);
-        }
-    } else {
-        res.status(404).json({ message: 'User details not found for the given session ID' });
+    try{
+    const userEmail = req.session.user.email;
+    const user= await UserModel.find({email:userEmail});
+    console.log("user",user[0].cart);
+    res.json(user[0].cart)
     }
-};
+    catch(error){
+      console.log("error",error)
+    }
+  }
+  

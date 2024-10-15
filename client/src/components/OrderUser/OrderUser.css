@@ -19,4 +19,8 @@
   .table tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+  .order-user{
+    background-color: #f6e4e3;
+  }
   

@@ -11,8 +11,8 @@ export const confirmOrder=async(req,res) =>{
       user_id:req.session.user.email,///check it letter
       product_id:item.product_id,
       productName:item.productName,
-      productPrice:item.productPrice,
-      amount:item.quantity*item.productPrice,
+      discountedPrice:item.discountedPrice,
+      amount:item.quantity*item.discountedPrice,
       paymentMode:'cod',
       address:req.session.user.address,
       quantity:item.quantity,

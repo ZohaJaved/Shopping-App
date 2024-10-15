@@ -7,7 +7,7 @@ const OrderSchema=({
     productName:{type:String,required:true},
     customerName:{type:String,required:true},
     contactNum:{type:Number,required:true},
-    productPrice:{type:Number,required:true},
+    discountedPrice:{type:Number,required:true},
     quantity:{type:Number,required:true},
     email:{type:String,required:true},
     image: {

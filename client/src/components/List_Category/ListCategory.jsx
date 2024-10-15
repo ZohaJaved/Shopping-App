@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import CategoryContext from "../Context/CategoryContext"
 import axios from "axios";
-import "../List_Category/ListCategory.css"
+import styles from "../List_Category/ListCategory.module.css"
 
 function ListCategory(props){
   const CatContext=useContext(CategoryContext);
@@ -55,9 +55,6 @@ return (
       <td>
   <button onClick={()=>deleteCategory(props._id)}>DELETE</button>
 </td>
-      
-      
-
   </tr>
 )}
 export default ListCategory;

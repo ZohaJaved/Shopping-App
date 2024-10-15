@@ -41,7 +41,7 @@ import axios from 'axios';
                 <td   data-sticky="right">{props.id}</td>
                 <td  >{props.name}</td>
                 <td  >{props.category}</td>
-                <td  >{props.price}(rupees)</td>
+                <td  >{props.discountedPrice}</td>
                 <td   >{props.quantity}</td>
                 <td  >{props.shipping}</td>
                 <td  >{props.productType}</td>

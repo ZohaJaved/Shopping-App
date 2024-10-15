@@ -1,0 +1,103 @@
+.category{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color:#e2f5f5;
+  margin: 10px;
+  height: 22vh;
+}
+
+.category-container{
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* Adjust spacing between items */
+  scrollbar-width: thin;
+  align-items: center;
+  width: 90%; /* Adjust width as needed */
+  margin-right: 10px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+
+.category .category-container .cat-item{
+  flex: 1 1 200px;
+  margin: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-item .image {
+  width: 100px;
+  height: 80px; /* Fixed height for images */
+  overflow: hidden; /* Hide overflow if images are larger */
+}
+
+.category .category-container .cat-item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure images cover the container */
+  /* max-height: 100px;
+  max-width: 100px; */
+}
+
+.cat-item .name {
+  font-size: 1em; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the text bold */
+  
+}
+
+@media(max-width:768px){
+  .category {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 25vh;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; 
+    scrollbar-width: thin;
+    padding: 5px; /* Add padding for better spacing */
+    scroll-behavior: smooth; /* Optional: for smooth scrolling */
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.category-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* Adjust spacing between items */
+  scrollbar-width: thin;
+  align-items: center;
+  width: 100%; /* Adjust width as needed */
+  margin-right: 2px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+
+.category-container .cat-item img{
+  width: 2rem;
+  height: auto;
+}
+
+.category-container::-webkit-scrollbar {
+    height: 8px; /* Customize scrollbar height */
+}
+
+.category-container::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Customize scrollbar color */
+    border-radius: 10px; /* Optional: round scrollbar corners */
+}
+
+}
+
+
+
+
+  

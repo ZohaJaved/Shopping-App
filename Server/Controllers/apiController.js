@@ -1,8 +1,9 @@
 
 
 export const checkSession=async(req,res)=>{
+    console.log("Cookies:", req.cookies);
     console.log("apiController-->checkSession,req.session",req.session)
-    if(req.session.user&&req.cookies.user_zoha){
+    if(req.session.user){  //checking if user is loggedIn
         console.log("loggedIn is true")
         res.status(200).json({loggedIn:true,userCart:req.session.user.cart});
     }

@@ -38,20 +38,15 @@ export const getSubCategory=async (req,res) =>{
 
 
     export const getProductsByProductType=async (req,res) =>{
-      const productType=req.query.productType;
-      const typeOrCat=req.query.typeOrCat;
+      const tags=req.query.tags;
+      
      // console.log("productType in productController",productType)
       var fetched_doc=[];
       try {
-        if(typeOrCat==='type'){
-          const productType=req.query.productType;
-         fetched_doc = await Product.find({productType});}
-        else if(typeOrCat==='Cat'){
-          const category=req.query.categoryName;
-           fetched_doc = await Product.find({category});
-         //  console.log("fetched_doc",fetched_doc)
-        }
-       // console.log("subCat array",fetched_doc)
+          
+         fetched_doc = await Product.find({tags});
+         
+       console.log("fetched ,TAG",fetched_doc.length,tags)
            res.json({ fetched_doc });
       }
      catch (error) {
@@ -61,19 +56,25 @@ export const getSubCategory=async (req,res) =>{
       }
 
 export const addProduct=async(req,res) =>{
-  const {productName,productPrice,description,category,quantity,shipping,discount,productType,image}=req.body;
-  
- // console.log("req.body",req.body)
+  const {productName,basePrice,sku,discountedPrice,productDescription,category,productImages,discount,tags,sizes,colors,weight}=req.body;
+  let images=[]
+ console.log("req.body",req.body)
+  productImages.forEach((image,index)=>{
+   images[index]={original:image,thumbnail:image}
+  })
   const newProductData={
     productName,
-    productPrice,
-    description,
+    basePrice,
+    discountedPrice,
+    productImages:images,
+    productDescription,
     category,
-    quantity,
-    shipping,
     discount,
-    productType,
-    image
+    tags,
+    sizes,
+    sku,
+    colors,
+    weight
   }
  
 //console.log("newProductData",newProductData);
@@ -141,8 +142,11 @@ export const search =async(req,res)=>{
 
   try{
     // Use Product.find() with a query object to find products with a matching name
-  const products = await Product.find({ productName: { $regex: searchTerm, $options: 'i' } });
-  
+  const products = await Product.find({ 
+    productName: {
+      $regex: searchTerm,
+       $options: 'i' } });
+
   console.log("results",products[0].productName)
   // Send the found products as the response
   res.json(products);
@@ -153,8 +157,6 @@ export const search =async(req,res)=>{
     console.log(error)
   }
 }
-
-
 
 
 export const deleteProduct = async (req, res) => {
