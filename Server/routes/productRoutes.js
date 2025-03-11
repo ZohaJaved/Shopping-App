@@ -15,5 +15,6 @@ router.get('/getProducts',getProducts)
 router.put(`/updateProduct/:id`, updateProduct);
 router.post(`/delProduct/:id`,deleteProduct);
 router.get('/getProductsByProductType',getProductsByProductType)
-router.get('/search/:searchTerm', search);
+// router.get('/search/:searchTerm', search);
+router.get('/search', search);
 router.get(`/itemsToDisplay`,FetchItemsToDisplay);

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useEffect,useContext } from 'react';
 import axios from "axios";
-import ProductContext from "../Context/ProductContext"
+import ProductContext from "../../Context/ProductContext"
 import { useNavigate } from 'react-router-dom';
 import "./ProductList.css"
 

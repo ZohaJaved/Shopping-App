@@ -4,7 +4,7 @@ import axios from "axios";
 import ListCategory from "../List_Category/ListCategory.jsx";
 import AdminNavbar from "../Navbar/AdminNavbar.jsx";
 import SideNav from "../SideNav.jsx";
-import SidebarContext from "../Context/SidebarContext.js";
+import SidebarContext from "../../Context/SidebarContext.js";
 
 function Category() {
   const navElements = ["Products", "orders", "Account", "Logout"];

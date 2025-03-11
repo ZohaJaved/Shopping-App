@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import SidebarContext from "../Context/SidebarContext";
+import SidebarContext from "../../Context/SidebarContext";
 import logo from "../img/logo.jpeg";
 import toggleIcon from "./toggleIcon.svg";
 import "./Navbars.css";
@@ -16,7 +16,7 @@ function AdminNavbar({ navElements }) {
   };
 
   return (
-    <div className="header">
+    <div className="header" style={{width:'100%'}}>
       <div
         className="headerLeftAdmin"
         style={{

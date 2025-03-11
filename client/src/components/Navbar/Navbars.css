@@ -9,7 +9,7 @@
 
 .headerLeft {
   width: 55%;
-  margin-left: 2%;
+  /* margin-left: 1%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,9 +19,11 @@
 .logo-name {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 30%;
+  margin-left: 10px;
+  
 }
 
 
@@ -74,8 +76,8 @@
 
 .headerRight .menu li:hover {
   cursor: pointer;
-  background-color: #ccc;
-  border-radius: 10%;
+  background-color: #eb8f85;
+  border-radius: 20%;
 }
 
 .menu > ul {

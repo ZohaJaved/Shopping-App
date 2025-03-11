@@ -1,7 +1,7 @@
 import React,{useContext,useState,useEffect} from 'react'
-import ProductContext from '../Context/ProductContext';
+import ProductContext from '../../Context/ProductContext.js';
 import { useNavigate } from 'react-router-dom';
-import CategoryContext from '../Context/CategoryContext';
+import CategoryContext from '../../Context/CategoryContext.js';
 import Navbars from '../Navbar/Navbars.jsx';
 import axios from 'axios';
 import backIcon from "../img/backIcon.svg";

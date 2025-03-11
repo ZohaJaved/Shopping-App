@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbars from "../Navbar/Navbars";
 import SideNav from "../SideNav";
-import SidebarContext from "../Context/SidebarContext.js";
+import SidebarContext from "../../Context/SidebarContext.js";
 import { useContext } from "react";
 
 export default function ProductInput() {

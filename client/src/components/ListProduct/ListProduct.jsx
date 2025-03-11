@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ProductContext from "../Context/ProductContext"
+import ProductContext from "../../Context/ProductContext"
 import axios from 'axios';
 
  function ListProduct(props) {

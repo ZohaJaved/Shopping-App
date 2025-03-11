@@ -84,7 +84,7 @@ function calculateBill(cartItems) {
 
 //function to add to cart
 function AddToCart(productDetails, quantityIncrement) {
-  console.log("productDetails--> AddToCart", productDetails);
+  console.log("productDetails--> AddToCart", productDetails,quantityIncrement);
   axios
     .post(`http://localhost:3001/cart/AddToCart`, {
       productDetails: productDetails,

@@ -6,7 +6,7 @@ import ListProduct from "../ListProduct/ListProduct.jsx";
 import AdminNavbar from "../Navbar/AdminNavbar.jsx";
 import SideNav from "../SideNav.jsx";
 import ProductList from "./ProductList.jsx";
-import SidebarContext from "../Context/SidebarContext.js";
+import SidebarContext from "../../Context/SidebarContext.js";
 
 function Product() {
   const navElements = ['Category', 'Orders', 'Account', 'Logout'];

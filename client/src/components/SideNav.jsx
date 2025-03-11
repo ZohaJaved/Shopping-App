@@ -5,7 +5,7 @@ import * as FaIcons from "react-icons/fa6";
 import * as AiIcons from "react-icons/io5";
 import { Link } from "react-router-dom";
 import {SidebarData} from './SidebarData';
-import SidebarContext from './Context/SidebarContext';
+import SidebarContext from '../Context/SidebarContext';
 import { useAuth } from "../auth";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 

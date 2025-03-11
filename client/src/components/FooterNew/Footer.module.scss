@@ -1,0 +1,101 @@
+@import '../../../variable.scss';
+
+/* Unique Wrapper to Reset External Styles */
+.footerWrapper {
+    all: unset; /* Resets inherited global styles */
+}
+
+/* Ensuring Styles are Not Overridden */
+.Container {
+    margin: 0 auto !important;
+    font-size: medium !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: $siteFooterHeight !important;
+    background-color: $themeColor !important;
+}
+
+/* Reset all external styles affecting child elements */
+.Container * {
+    all: unset;
+}
+
+/* Reapply necessary styles after resetting */
+.Container .body {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 80px 0;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    color: $mediumTextColor !important;
+}
+
+.Container .body .logo h1 {
+    color: $white !important;
+}
+
+.Container .body .logo img {
+    height: 40px !important;
+}
+
+.Container .body .links {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Container .body .links .title {
+    color: $white !important;
+    font-weight: 500 !important;
+}
+
+.Container .body .links a {
+    padding: 5px 0 !important;
+    color: $white !important;
+    font-size: 1.2rem !important;
+    font-weight: 200 !important;
+
+    &:hover {
+        transition: border-bottom .1s ease-out !important;
+        text-decoration: underline !important;
+    }
+}
+
+.Container .body .notices .title {
+    color: $white !important;
+    font-weight: 500 !important;
+}
+
+.Container .body .notices .copyRight {
+    margin-top: 10px !important;
+    font-size: medium !important;
+    font-weight: 300 !important;
+    color: $white !important;
+}
+
+.Container .body .notices .copyRight a {
+    color: $lightThemeColor !important;
+
+    &:hover {
+        color: $white !important;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .Container {
+        height: $siteMobileFooterHeight !important;
+    }
+}
+
+@media only screen and (min-device-width: 480px) and (max-device-width: 1080px) {
+    .Container {
+        height: $siteMobileFooterHeight !important;
+    }
+}

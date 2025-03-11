@@ -136,27 +136,46 @@ console.log("getProductQuantity", productId); // Log the product ID to verify
   }}
 
 //getProduct by search
-export const search =async(req,res)=>{
-  console.log("search",req.params.searchTerm)
-  const searchTerm = req.params.searchTerm;
+// export const search =async(req,res)=>{
+//   console.log("search",req.params.searchTerm)
+//   const searchTerm = req.params.searchTerm;
 
-  try{
-    // Use Product.find() with a query object to find products with a matching name
-  const products = await Product.find({ 
-    productName: {
-      $regex: searchTerm,
-       $options: 'i' } });
+//   try{
+//     // Use Product.find() with a query object to find products with a matching name
+//   const products = await Product.find({ 
+//     productName: {
+//       $regex: searchTerm,
+//        $options: 'i' } });
 
-  console.log("results",products[0].productName)
-  // Send the found products as the response
-  res.json(products);
- // console.log("results",results)
+//   console.log("results",products[0].productName)
+//   // Send the found products as the response
+//   res.json(products);
+//  // console.log("results",results)
   
+//   }
+//   catch(error){
+//     console.log(error)
+//   }
+// }
+
+export const search = async (req, res) => {
+  const searchTerm = req.query.searchTerm;
+
+  try {
+    // Use Product.find() with a query object to find products with a matching name
+    const products = await Product.find({ 
+      productName: { 
+        $regex: searchTerm, 
+        $options: 'i' 
+      } 
+    });
+
+    res.json(products);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Server Error', error });
   }
-  catch(error){
-    console.log(error)
-  }
-}
+};
 
 
 export const deleteProduct = async (req, res) => {

@@ -67,3 +67,32 @@ export const authenticateLogIn = async (req, res) => {
         return res.status(500).send({ success: false, message: 'Error in login API', error });
     }
 };
+
+
+// Route to fetch user details
+export const details = async (req, res) => {
+    const email = req.query.email;
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+    res.json({ success: true, user });
+  };
+  
+  // Route to update user details
+  export const updateProfile = async (req, res) => {
+    const email = req.session.user.email;
+    const user = await UserModel.findOne({ email });
+  
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+  
+    const { name, contact, address } = req.body;
+    user.name = name;
+    user.contact = contact;
+    user.address = address;
+  
+    res.json({ success: true, message: 'User details updated successfully', user });
+  };
+  

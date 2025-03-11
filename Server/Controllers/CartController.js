@@ -6,73 +6,73 @@ import session from "express-session";
 
 
 
-export const AddToCart = async (req, res) => {
-  const { ObjectId } = mongoose.Types; // Destructure ObjectId
-    const { productName, basePrice,discountedPrice, category, discount, productImages, _id
-       } = req.body.productDetails;
-       const email=req.session.user.email;
-    const quantityIncrement = req.body.quantityIncrement;
-    console.log("quantityIncrement",quantityIncrement)
-   // console.log("req.body",req.body)
-    const newCartItem = {
-        productName,
-        basePrice,
-        discountedPrice,
-        category,
-        discount,
-        quantity:quantityIncrement|1,
-        // productImages,
-        product_id: _id, // Assuming this is the correct ID field
-    };
-    console.log("newCartItem",newCartItem)
+// export const AddToCart = async (req, res) => {
+//   const { ObjectId } = mongoose.Types; // Destructure ObjectId
+//     const { productName, basePrice,discountedPrice, category, discount, productImages, _id
+//        } = req.body.productDetails;
+//        const email=req.session.user.email;
+//     const quantityIncrement = req.body.quantityIncrement;
+//     console.log("quantityIncrement",quantityIncrement)
+//    // console.log("req.body",req.body)
+//     const newCartItem = {
+//         productName,
+//         basePrice,
+//         discountedPrice,
+//         category,
+//         discount,
+//         quantity:quantityIncrement|1,
+//         // productImages,
+//         product_id: _id, // Assuming this is the correct ID field
+//     };
+//     console.log("newCartItem",newCartItem)
     
-    try {
-     //find the userDetails
-     const user=await UserModel.findOne({email})
-     console.log("user.cart",user.cart);
-     if(!user){
-      return res.status(404).json({ message: 'User not found' });
-     }
-    // Check if the product already exists in the user's cart
-    console.log("_id",_id)
-    const existingCartItem = user?.cart?.find(item =>{const mongooseObjectId = new ObjectId(_id);
-      return mongooseObjectId.equals(item.product_id);})
-    // existingCartItem will be either the matching item or null
+//     try {
+//      //find the userDetails
+//      const user=await UserModel.findOne({email})
+//      console.log("user.cart",user.cart);
+//      if(!user){
+//       return res.status(404).json({ message: 'User not found' });
+//      }
+//     // Check if the product already exists in the user's cart
+//     console.log("_id",_id)
+//     const existingCartItem = user?.cart?.find(item =>{const mongooseObjectId = new ObjectId(_id);
+//       return mongooseObjectId.equals(item.product_id);})
+//     // existingCartItem will be either the matching item or null
     
-     console.log("existingCartItem",existingCartItem);
-     if (existingCartItem) {
-      // If the product exists, update the quantity
-      existingCartItem.quantity += quantityIncrement;
-      user.cart=existingCartItem;
-  }
-  else {
-    // If the product doesn't exist, create a new item and add it to the cart
-    if (newCartItem.productName && newCartItem.basePrice && newCartItem.discountedPrice  && newCartItem.productImages && newCartItem.product_id ) {
-      console.log("newCartItem.productName:", newCartItem.productName);
-      console.log("newCartItem.basePrice:", newCartItem.basePrice);
-      console.log("newCartItem.quantity:", newCartItem.quantity);
-      console.log("newCartItem.discountedPrice:", newCartItem.discountedPrice);
-      console.log("newCartItem.discount:", newCartItem.discount);
-      console.log("newCartItem.productImages.length:", newCartItem.productImages.length);
-      console.log("user.cart.length",user.cart.length)
-      await user.cart.push(newCartItem);
-      console.log("user.cart.length",user.cart.length);
-    }
-    else {
-      console.error("newCartItem", newCartItem);
-    }
-  }
+//      console.log("existingCartItem",existingCartItem);
+//      if (existingCartItem) {
+//       // If the product exists, update the quantity
+//       existingCartItem.quantity += quantityIncrement;
+//       user.cart=existingCartItem;
+//   }
+//   else {
+//     // If the product doesn't exist, create a new item and add it to the cart
+//     if (newCartItem.productName && newCartItem.basePrice && newCartItem.discountedPrice  && newCartItem.productImages && newCartItem.product_id ) {
+//       console.log("newCartItem.productName:", newCartItem.productName);
+//       console.log("newCartItem.basePrice:", newCartItem.basePrice);
+//       console.log("newCartItem.quantity:", newCartItem.quantity);
+//       console.log("newCartItem.discountedPrice:", newCartItem.discountedPrice);
+//       console.log("newCartItem.discount:", newCartItem.discount);
+//       console.log("newCartItem.productImages.length:", newCartItem.productImages.length);
+//       console.log("user.cart.length",user.cart.length)
+//       await user.cart.push(newCartItem);
+//       console.log("user.cart.length",user.cart.length);
+//     }
+//     else {
+//       console.error("newCartItem", newCartItem);
+//     }
+//   }
   
-// Save the updated user object
-const updatedUser = await user.save();
-console.log("updatedUserCart",updatedUser.cart)
-// Return the updated user object with the cart
-return res.status(200).json(updatedUser.cart);
-} catch (error) {
-console.error('An error occurred:', error);
-return res.status(500).json({ message: 'Internal server error' });
-}
-};
+// // Save the updated user object
+// const updatedUser = await user.save();
+// console.log("updatedUserCart",updatedUser.cart)
+// // Return the updated user object with the cart
+// return res.status(200).json(updatedUser.cart);
+// } catch (error) {
+// console.error('An error occurred:', error);
+// return res.status(500).json({ message: 'Internal server error' });
+// }
+// };
    
 
 
@@ -97,6 +97,80 @@ return res.status(500).json({ message: 'Internal server error' });
     // }
     
 //modify Cart
+
+export const AddToCart = async (req, res) => {
+  try {
+    const { ObjectId } = mongoose.Types;
+    const { productName, basePrice, discountedPrice, category, discount, productImages, _id } =
+      req.body.productDetails;
+    const email = req.session.user?.email;
+    const quantityIncrement = req.body.quantityIncrement || 1;
+
+    if (!email) {
+      return res.status(401).json({ message: "User not authenticated" });
+    }
+
+    console.log("quantityIncrement:", quantityIncrement);
+
+    // Ensure _id is a valid ObjectId string before converting
+    if (typeof _id !== "string" || !ObjectId.isValid(_id)) {
+      return res.status(400).json({ message: "Invalid product ID" });
+    }
+
+    const productId = new mongoose.Types.ObjectId(String(_id)); // Safe conversion
+
+    const newCartItem = {
+      productName,
+      basePrice,
+      discountedPrice,
+      category,
+      discount,
+      quantity: quantityIncrement,
+      productImages,
+      product_id: productId,
+    };
+
+    console.log("newCartItem:", newCartItem);
+
+    // Find the user in the database
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    console.log("user.cart:", user.cart);
+
+    // Check if the product already exists in the user's cart
+    const existingCartItem = user.cart.find((item) =>
+      productId.equals(item.product_id)
+    );
+
+    console.log("existingCartItem:", existingCartItem);
+
+    if (existingCartItem) {
+      // If the product exists, update its quantity
+      existingCartItem.quantity += quantityIncrement;
+    } else {
+      // If the product doesn't exist, add it to the cart
+      if (productName && basePrice && discountedPrice && productImages?.length) {
+        console.log("Adding new product to cart...");
+        user.cart.push(newCartItem);
+      } else {
+        return res.status(400).json({ message: "Invalid product details" });
+      }
+    }
+
+    // Save the updated user document
+    await user.save();
+    console.log("Updated Cart:", user.cart);
+
+    return res.status(200).json(user.cart);
+  } catch (error) {
+    console.error("An error occurred:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const ModifyCart = async (req, res) => {
    console.log("ModifyCart in userController ");
   const { ObjectId } = mongoose.Types; // Destructure ObjectId

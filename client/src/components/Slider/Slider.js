@@ -40,7 +40,7 @@ export default function Slider() {
 
 
    return (
-        <div className="container-slider">
+        <div className="container-slider" style={{width:'100%'}}>
             {dataSlider.map((obj, index) => {
                 return (
                     <div 

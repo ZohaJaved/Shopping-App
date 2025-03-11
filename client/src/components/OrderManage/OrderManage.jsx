@@ -3,7 +3,7 @@ import "./OrderManage.css";
 import { useState, useContext } from "react";
 import AdminNavbar from "../Navbar/AdminNavbar.jsx";
 import axios from "axios";
-import SidebarContext from "../Context/SidebarContext.js";
+import SidebarContext from "../../Context/SidebarContext.js";
 import SideNav from "../SideNav.jsx";
 
 function OrderManage() {

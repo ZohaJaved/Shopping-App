@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import isEqual from "lodash.isequal";
 import axios from "axios";
 // import actionCreators from '../../state/index.js';
-import LoginContext from "../Context/LoginContext";
+import LoginContext from "../../Context/LoginContext.js";
 import ProductDetailsInCart from "../ProductDetailsInCart/ProductDetailsInCart";
 import {
   calculateBill,
@@ -157,14 +157,14 @@ const Cart = () => {
   };
 
   return (
-    <div>
+    <div style={{height:'100vh'}}>
       <Navbars navElements={navElements} searchbar="true" />
       {!cartItems || cartItems.length === 0 ? (
         <div style={headingMargin}>
           <h1>No Items in Cart</h1>
         </div>
       ) : (
-        <div className="cartPage">
+        <div className="cartPage" style={{ height: 'calc(100% - 100px)',backgroundColor:'#FFFFFF' }}>
           <div className="cartWrapper">
             <div className="container">
               <h2>Items In Your Cart</h2>
@@ -184,7 +184,7 @@ const Cart = () => {
                 ))}
             </div>
           </div>
-          <div className="priceDetail">
+          <div className="priceDetail" style={{maxHeight:'515px'}}>
             <div>
               <h2 style={{ paddingLeft: "30%", backgroundColor: "white" }}>
                 Price Details
@@ -221,9 +221,10 @@ const Cart = () => {
               Shipping charges are free on orders above Rs 1000
             </span>
             <hr />
-            <div className="button-container">
+            <div className="button-container" style={{backgroundColor:'#FFFFFF',display:'flex',justifyItems:'center',alignItems:'center',marginBottom:'8px'}}>
               <button
                 className="checkOutButton"
+                style={{backgroundColor:'black',borderRadius:'10px'}}
                 onClick={(event) => paymenthandler(event)}
               >
                 Confirm Order

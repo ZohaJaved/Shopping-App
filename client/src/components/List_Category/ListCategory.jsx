@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import CategoryContext from "../Context/CategoryContext"
+import CategoryContext from "../../Context/CategoryContext"
 import axios from "axios";
 import styles from "../List_Category/ListCategory.module.css"
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState,useContext } from 'react';
 import axios from 'axios';
 import "./ProductDetailsInCart.css"
-import LoginContext from '../Context/LoginContext'
+import LoginContext from '../../Context/LoginContext'
 import { getProducts, modifyCart,updateBillSummary } from '../../state/features/cartSlicer';
 import { useDispatch,useSelector } from 'react-redux';
 
